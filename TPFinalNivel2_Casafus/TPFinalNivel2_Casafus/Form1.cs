@@ -8,7 +8,8 @@ using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-
+using Dominio;
+using Negocio;
 
 
 namespace TPFinalNivel2_Casafus
@@ -27,30 +28,80 @@ namespace TPFinalNivel2_Casafus
             InitializeComponent();
         }
 
-        private void pictureBox1_Click(object sender, EventArgs e)
-        {
-            if(menuVertical.Width == 250)
-            {
-                menuVertical.Width = 70;
-            }
-            else
-            {
-                menuVertical.Width = 250;
-            }
-        }
-
         private void Form1_Load(object sender, EventArgs e)
         {
-            
+            FormArticulo form = new FormArticulo();
+            mostrarForm(form);           
         }
 
-        private void panelTitulo_MouseDown(object sender, MouseEventArgs e)
+        private void pictureBox2_Click(object sender, EventArgs e)
+        {
+            Close();
+        }
+
+        private void panel2_MouseDown(object sender, MouseEventArgs e)
         {
             if (e.Button == MouseButtons.Left)
             {
                 ReleaseCapture();
                 SendMessage(Handle, 0xA1, 0x2, 0);
             }
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+            FormArticulo formArticulo = new FormArticulo();
+            mostrarForm(formArticulo);
+        }
+
+        private void label2_Click(object sender, EventArgs e)
+        {
+            FormCategoria form = new FormCategoria();
+            mostrarForm(form);
+        }
+
+        private void label3_Click(object sender, EventArgs e)
+        {
+            FormMarca form = new FormMarca();
+            mostrarForm(form);
+        }
+
+        private void mostrarForm(Form form)
+        {
+            form.TopLevel = false;
+            panelCentro.Controls.Clear();
+            panelCentro.Controls.Add(form);
+            form.Show();
+        }
+
+        private void label1_MouseMove(object sender, MouseEventArgs e)
+        {
+            label1.ForeColor = Color.Gray;
+        }
+
+        private void label1_MouseLeave(object sender, EventArgs e)
+        {
+            label1.ForeColor = Color.White;
+        }
+
+        private void label2_MouseMove(object sender, MouseEventArgs e)
+        {
+            label2.ForeColor = Color.Gray;
+        }
+
+        private void label2_MouseLeave(object sender, EventArgs e)
+        {
+            label2.ForeColor = Color.White;
+        }
+
+        private void label3_MouseMove(object sender, MouseEventArgs e)
+        {
+            label3.ForeColor = Color.Gray;
+        }
+
+        private void label3_MouseLeave(object sender, EventArgs e)
+        {
+            label3.ForeColor = Color.White;
         }
     }
 }
