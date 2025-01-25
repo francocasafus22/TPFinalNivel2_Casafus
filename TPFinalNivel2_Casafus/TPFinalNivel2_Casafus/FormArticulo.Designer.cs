@@ -32,24 +32,24 @@
             this.label1 = new System.Windows.Forms.Label();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
-            this.comboBox2 = new System.Windows.Forms.ComboBox();
-            this.comboBox3 = new System.Windows.Forms.ComboBox();
             this.button1 = new System.Windows.Forms.Button();
+            this.comboBox3 = new System.Windows.Forms.ComboBox();
+            this.comboBox2 = new System.Windows.Forms.ComboBox();
+            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.dgvArticulos = new System.Windows.Forms.DataGridView();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.pictureBox2 = new System.Windows.Forms.PictureBox();
-            this.pictureBox3 = new System.Windows.Forms.PictureBox();
-            this.pictureBox4 = new System.Windows.Forms.PictureBox();
+            this.pbAgregar = new System.Windows.Forms.PictureBox();
+            this.pbBorrar = new System.Windows.Forms.PictureBox();
+            this.pbModificar = new System.Windows.Forms.PictureBox();
             this.pbArticulo = new System.Windows.Forms.PictureBox();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvArticulos)).BeginInit();
             this.panel2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbAgregar)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbBorrar)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbModificar)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbArticulo)).BeginInit();
             this.SuspendLayout();
             // 
@@ -88,34 +88,15 @@
             this.panel1.Size = new System.Drawing.Size(1127, 80);
             this.panel1.TabIndex = 2;
             // 
-            // pictureBox1
+            // button1
             // 
-            this.pictureBox1.BackColor = System.Drawing.Color.Transparent;
-            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(182, 31);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(28, 26);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox1.TabIndex = 2;
-            this.pictureBox1.TabStop = false;
-            // 
-            // comboBox1
-            // 
-            this.comboBox1.Font = new System.Drawing.Font("Noto Sans", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(497, 29);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(121, 28);
-            this.comboBox1.TabIndex = 3;
-            // 
-            // comboBox2
-            // 
-            this.comboBox2.Font = new System.Drawing.Font("Noto Sans", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.comboBox2.FormattingEnabled = true;
-            this.comboBox2.Location = new System.Drawing.Point(637, 28);
-            this.comboBox2.Name = "comboBox2";
-            this.comboBox2.Size = new System.Drawing.Size(121, 28);
-            this.comboBox2.TabIndex = 4;
+            this.button1.Font = new System.Drawing.Font("Noto Sans", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button1.Location = new System.Drawing.Point(975, 29);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(96, 26);
+            this.button1.TabIndex = 6;
+            this.button1.Text = "Agregar";
+            this.button1.UseVisualStyleBackColor = true;
             // 
             // comboBox3
             // 
@@ -126,15 +107,34 @@
             this.comboBox3.Size = new System.Drawing.Size(121, 28);
             this.comboBox3.TabIndex = 5;
             // 
-            // button1
+            // comboBox2
             // 
-            this.button1.Font = new System.Drawing.Font("Noto Sans", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.Location = new System.Drawing.Point(975, 29);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(96, 26);
-            this.button1.TabIndex = 6;
-            this.button1.Text = "Agregar";
-            this.button1.UseVisualStyleBackColor = true;
+            this.comboBox2.Font = new System.Drawing.Font("Noto Sans", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.comboBox2.FormattingEnabled = true;
+            this.comboBox2.Location = new System.Drawing.Point(637, 28);
+            this.comboBox2.Name = "comboBox2";
+            this.comboBox2.Size = new System.Drawing.Size(121, 28);
+            this.comboBox2.TabIndex = 4;
+            // 
+            // comboBox1
+            // 
+            this.comboBox1.Font = new System.Drawing.Font("Noto Sans", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.comboBox1.FormattingEnabled = true;
+            this.comboBox1.Location = new System.Drawing.Point(497, 29);
+            this.comboBox1.Name = "comboBox1";
+            this.comboBox1.Size = new System.Drawing.Size(121, 28);
+            this.comboBox1.TabIndex = 3;
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.BackColor = System.Drawing.Color.Transparent;
+            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
+            this.pictureBox1.Location = new System.Drawing.Point(182, 31);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(28, 26);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox1.TabIndex = 2;
+            this.pictureBox1.TabStop = false;
             // 
             // dgvArticulos
             // 
@@ -147,44 +147,51 @@
             // 
             // panel2
             // 
-            this.panel2.Controls.Add(this.pictureBox4);
-            this.panel2.Controls.Add(this.pictureBox3);
-            this.panel2.Controls.Add(this.pictureBox2);
+            this.panel2.Controls.Add(this.pbAgregar);
+            this.panel2.Controls.Add(this.pbBorrar);
+            this.panel2.Controls.Add(this.pbModificar);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.panel2.Location = new System.Drawing.Point(0, 516);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(1127, 73);
             this.panel2.TabIndex = 4;
             // 
-            // pictureBox2
+            // pbAgregar
             // 
-            this.pictureBox2.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox2.Image")));
-            this.pictureBox2.Location = new System.Drawing.Point(637, 11);
-            this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(50, 50);
-            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox2.TabIndex = 5;
-            this.pictureBox2.TabStop = false;
+            this.pbAgregar.BackColor = System.Drawing.Color.Transparent;
+            this.pbAgregar.Image = ((System.Drawing.Image)(resources.GetObject("pbAgregar.Image")));
+            this.pbAgregar.Location = new System.Drawing.Point(439, 11);
+            this.pbAgregar.Name = "pbAgregar";
+            this.pbAgregar.Size = new System.Drawing.Size(50, 50);
+            this.pbAgregar.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pbAgregar.TabIndex = 7;
+            this.pbAgregar.TabStop = false;
+            this.pbAgregar.Click += new System.EventHandler(this.pbAgregar_Click);
+            this.pbAgregar.MouseMove += new System.Windows.Forms.MouseEventHandler(this.pbAgregar_MouseMove);
             // 
-            // pictureBox3
+            // pbBorrar
             // 
-            this.pictureBox3.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox3.Image")));
-            this.pictureBox3.Location = new System.Drawing.Point(539, 11);
-            this.pictureBox3.Name = "pictureBox3";
-            this.pictureBox3.Size = new System.Drawing.Size(50, 50);
-            this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox3.TabIndex = 6;
-            this.pictureBox3.TabStop = false;
+            this.pbBorrar.Image = ((System.Drawing.Image)(resources.GetObject("pbBorrar.Image")));
+            this.pbBorrar.Location = new System.Drawing.Point(539, 11);
+            this.pbBorrar.Name = "pbBorrar";
+            this.pbBorrar.Size = new System.Drawing.Size(50, 50);
+            this.pbBorrar.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pbBorrar.TabIndex = 6;
+            this.pbBorrar.TabStop = false;
+            this.pbBorrar.Click += new System.EventHandler(this.pbBorrar_Click);
+            this.pbBorrar.MouseMove += new System.Windows.Forms.MouseEventHandler(this.pbBorrar_MouseMove);
             // 
-            // pictureBox4
+            // pbModificar
             // 
-            this.pictureBox4.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox4.Image")));
-            this.pictureBox4.Location = new System.Drawing.Point(439, 11);
-            this.pictureBox4.Name = "pictureBox4";
-            this.pictureBox4.Size = new System.Drawing.Size(50, 50);
-            this.pictureBox4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox4.TabIndex = 7;
-            this.pictureBox4.TabStop = false;
+            this.pbModificar.Image = ((System.Drawing.Image)(resources.GetObject("pbModificar.Image")));
+            this.pbModificar.Location = new System.Drawing.Point(637, 11);
+            this.pbModificar.Name = "pbModificar";
+            this.pbModificar.Size = new System.Drawing.Size(50, 50);
+            this.pbModificar.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pbModificar.TabIndex = 5;
+            this.pbModificar.TabStop = false;
+            this.pbModificar.Click += new System.EventHandler(this.pbModificar_Click);
+            this.pbModificar.MouseMove += new System.Windows.Forms.MouseEventHandler(this.pbModificar_MouseMove);
             // 
             // pbArticulo
             // 
@@ -213,9 +220,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvArticulos)).EndInit();
             this.panel2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbAgregar)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbBorrar)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbModificar)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbArticulo)).EndInit();
             this.ResumeLayout(false);
 
@@ -233,9 +240,9 @@
         private System.Windows.Forms.ComboBox comboBox2;
         private System.Windows.Forms.DataGridView dgvArticulos;
         private System.Windows.Forms.Panel panel2;
-        private System.Windows.Forms.PictureBox pictureBox4;
-        private System.Windows.Forms.PictureBox pictureBox3;
-        private System.Windows.Forms.PictureBox pictureBox2;
+        private System.Windows.Forms.PictureBox pbAgregar;
+        private System.Windows.Forms.PictureBox pbBorrar;
+        private System.Windows.Forms.PictureBox pbModificar;
         private System.Windows.Forms.PictureBox pbArticulo;
     }
 }
