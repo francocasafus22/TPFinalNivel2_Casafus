@@ -70,6 +70,18 @@
     <Compile Include="FormCategoria.Designer.cs">
       <DependentUpon>FormCategoria.cs</DependentUpon>
     </Compile>
+    <Compile Include="FormCategoriaAgregar.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormCategoriaAgregar.Designer.cs">
+      <DependentUpon>FormCategoriaAgregar.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormMarcaAgregar.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormMarcaAgregar.Designer.cs">
+      <DependentUpon>FormMarcaAgregar.cs</DependentUpon>
+    </Compile>
     <Compile Include="FormMarca.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -89,6 +101,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FormCategoria.resx">
       <DependentUpon>FormCategoria.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormCategoriaAgregar.resx">
+      <DependentUpon>FormCategoriaAgregar.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormMarcaAgregar.resx">
+      <DependentUpon>FormMarcaAgregar.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormMarca.resx">
       <DependentUpon>FormMarca.cs</DependentUpon>

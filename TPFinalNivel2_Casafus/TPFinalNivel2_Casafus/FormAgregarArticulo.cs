@@ -108,6 +108,10 @@ namespace TPFinalNivel2_Casafus
 
             try
             {
+
+                if (revisarCampos())
+                    return;
+
                 if (articulo == null)
                     articulo = new Articulo();
 
@@ -139,6 +143,46 @@ namespace TPFinalNivel2_Casafus
                 MessageBox.Show(ex.Message);
             }
            
+        }
+        private bool revisarCampos()
+        {
+            if (txtCodigo.Text == "")
+            {
+                MessageBox.Show("Debe completar el campo Código");
+                return true;
+            }
+            if (txtNombre.Text == "")
+            {
+                MessageBox.Show("Debe completar el campo Nombre");
+                return true;
+            }
+            if (txtDescripcion.Text == "")
+            {
+                MessageBox.Show("Debe completar el campo Descripción");
+                return true;
+            }
+            if (txtImagen.Text == "")
+            {
+                MessageBox.Show("Debe completar el campo Imagen");
+                return true;
+            }
+            if (txtPrecio.Text == "")
+            {
+                MessageBox.Show("Debe completar el campo Precio");
+                return true;
+            }
+            if (cbCategoria.SelectedIndex == -1)
+            {
+                MessageBox.Show("Debe seleccionar una categoría");
+                return true;
+            }
+            if (cbMarca.SelectedIndex == -1)
+            {
+                MessageBox.Show("Debe seleccionar una marca");
+                return true;
+            }
+
+            return false;
         }
     }
 }

@@ -45,5 +45,21 @@ namespace TPFinalNivel2_Casafus
             }
             dgvMarcas.DataSource = lista; 
         }
+
+        private void pbAgregar_Click(object sender, EventArgs e)
+        {
+            FormMarcaAgregar form = new FormMarcaAgregar();
+            form.ShowDialog();
+            cargarMarcas();
+        }
+
+        private void pbModificar_Click(object sender, EventArgs e)
+        {
+            Marca seleccionado = new Marca();
+            seleccionado = (Marca)dgvMarcas.CurrentRow.DataBoundItem;
+            FormMarcaAgregar form = new FormMarcaAgregar(seleccionado);
+            form.ShowDialog();
+            cargarMarcas();
+        }
     }
 }

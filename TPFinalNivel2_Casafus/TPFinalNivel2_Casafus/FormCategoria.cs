@@ -53,5 +53,21 @@ namespace TPFinalNivel2_Casafus
                 MessageBox.Show(ex.ToString());
             }
         }
+
+        private void pbAgregar_Click(object sender, EventArgs e)
+        {
+            FormCategoriaAgregar form = new FormCategoriaAgregar();
+            form.ShowDialog();
+            cargarCategorias();
+        }
+
+        private void pbModificar_Click(object sender, EventArgs e)
+        {
+            Categoria seleccionado = new Categoria();
+            seleccionado = (Categoria)dgvCategorias.CurrentRow.DataBoundItem;
+            FormCategoriaAgregar form = new FormCategoriaAgregar(seleccionado);
+            form.ShowDialog();
+            cargarCategorias();
+        }
     }
 }

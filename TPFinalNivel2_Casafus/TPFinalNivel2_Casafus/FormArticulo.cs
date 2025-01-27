@@ -63,7 +63,7 @@ namespace TPFinalNivel2_Casafus
             }
             catch (Exception)
             {
-                pbArticulo.Load("https://cdn.shopify.com/s/files/1/0533/2089/files/placeholder-images-image_large.png?v=1530129081");
+                pbArticulo.Load("https://fatty.pm.epages.com/themes/epages.base/assets/images/placeholder_900-2020f2c24e1d2e596916.jpg");
             }
         }
 
@@ -185,19 +185,20 @@ namespace TPFinalNivel2_Casafus
         {
             ArticuloNegocio negocio = new ArticuloNegocio();
             List<Articulo> listaFiltrada;
-            listaFiltrada = negocio.busquedaCategoria(cbBusqueda1.SelectedItem.ToString(), cbBusqueda2.SelectedItem.ToString());
+            listaFiltrada = negocio.busquedaFiltrada("", cbBusqueda1.SelectedItem.ToString(), cbBusqueda2.SelectedItem.ToString());
             dgvArticulos.DataSource = listaFiltrada;
             dgvArticulos.Columns["Imagen"].Visible = false;
             dgvArticulos.Columns["Id"].Visible = false;
-            cbBusqueda1.SelectedIndex = -1;
-            cbBusqueda2.SelectedIndex = -1;
-            cbBusqueda2.DataSource = null;
+            
         }
 
         private void pictureBox2_Click(object sender, EventArgs e)
         {
             ArticuloNegocio negocio = new ArticuloNegocio();
             dgvArticulos.DataSource = negocio.listar("");
+            cbBusqueda1.SelectedIndex = -1;
+            cbBusqueda2.SelectedIndex = -1;
+            cbBusqueda2.DataSource = null;
         }
         private bool soloNumeros(string texto)
         {
@@ -213,15 +214,17 @@ namespace TPFinalNivel2_Casafus
         } 
         private bool validarFiltros()
         {
-            if (cb1.SelectedItem.ToString() == "Precio")
-            {
-                if (!(soloNumeros(txtBuscar.Text)))
+            
+                if (cb1.SelectedItem?.ToString() == "Precio")
                 {
-                    MessageBox.Show("El campo de precio solo admite números");
-                    txtBuscar.Text = "";
-                    return true;
+                    if (!(soloNumeros(txtBuscar.Text)))
+                    {
+                        MessageBox.Show("El campo de precio solo admite números");
+                        txtBuscar.Text = "";
+                        return true;
+                    }
                 }
-            }
+            
 
             return false;
 

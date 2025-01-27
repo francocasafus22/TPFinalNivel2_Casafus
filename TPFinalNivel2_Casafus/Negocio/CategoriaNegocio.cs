@@ -16,7 +16,7 @@ namespace Negocio
             AccesoDatos datos = new AccesoDatos();
             try
             {
-                if(filtro == "")
+                if (filtro == "")
                 {
                     datos.setConsulta("select Id, Descripcion from Categorias");
                 }
@@ -44,6 +44,47 @@ namespace Negocio
                 datos.cerrarConexion();
             }
         }
+        public void Agregar(Categoria categoria)
+        {
+            AccesoDatos datos = new AccesoDatos();
 
+            try
+            {
+                datos.setConsulta("insert into Categorias (Descripcion) values (@texto)");
+                datos.setParametro("@texto", categoria.Descripcion);
+                datos.ejecutarAccion();
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+            finally
+            {
+                datos.cerrarConexion();
+            }
+        }
+        public void Modificar(Categoria categoria)
+        {
+            AccesoDatos datos = new AccesoDatos();
+
+            try
+            {
+                datos.setConsulta("update Categorias set Descripcion = @texto where Id = @id");
+                datos.setParametro("@texto", categoria.Descripcion);
+                datos.setParametro("@id", categoria.Id);
+                datos.ejecutarAccion();
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+            finally
+            {
+                datos.cerrarConexion();
+            }
+
+        }
     }
 }
