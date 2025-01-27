@@ -26,9 +26,24 @@ namespace TPFinalNivel2_Casafus
         private void cargarMarcas()
         {
             MarcaNegocio negocio = new MarcaNegocio();
-            List<Marca> lista = negocio.listar();
+            List<Marca> lista = negocio.listar("");
             dgvMarcas.DataSource = lista;
         }
 
+        private void button1_Click(object sender, EventArgs e)
+        {
+            MarcaNegocio negocio = new MarcaNegocio();  
+            List<Marca> lista;
+
+            if (txtBuscar.Text == "")
+            {
+                lista = negocio.listar("");
+            }
+            else
+            {
+                lista = negocio.listar(txtBuscar.Text);
+            }
+            dgvMarcas.DataSource = lista; 
+        }
     }
 }

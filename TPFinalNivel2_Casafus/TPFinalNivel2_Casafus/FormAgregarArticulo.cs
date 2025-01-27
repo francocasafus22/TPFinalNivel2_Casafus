@@ -40,10 +40,10 @@ namespace TPFinalNivel2_Casafus
 
             try
             {
-                cbCategoria.DataSource = categoriaNegocio.listar();
+                cbCategoria.DataSource = categoriaNegocio.listar("");
                 cbCategoria.ValueMember = "Id";
                 cbCategoria.DisplayMember = "Descripcion";
-                cbMarca.DataSource = marcaNegocio.listar();
+                cbMarca.DataSource = marcaNegocio.listar("");
                 cbMarca.ValueMember = "Id";
                 cbMarca.DisplayMember = "Descripcion";
 

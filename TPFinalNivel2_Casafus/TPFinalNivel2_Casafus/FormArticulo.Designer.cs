@@ -30,12 +30,11 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormArticulo));
             this.label1 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.txtBuscar = new System.Windows.Forms.TextBox();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.button1 = new System.Windows.Forms.Button();
-            this.comboBox3 = new System.Windows.Forms.ComboBox();
-            this.comboBox2 = new System.Windows.Forms.ComboBox();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.btnBuscar = new System.Windows.Forms.Button();
+            this.cb2 = new System.Windows.Forms.ComboBox();
+            this.cb1 = new System.Windows.Forms.ComboBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.dgvArticulos = new System.Windows.Forms.DataGridView();
             this.panel2 = new System.Windows.Forms.Panel();
@@ -43,6 +42,10 @@
             this.pbBorrar = new System.Windows.Forms.PictureBox();
             this.pbModificar = new System.Windows.Forms.PictureBox();
             this.pbArticulo = new System.Windows.Forms.PictureBox();
+            this.cbBusqueda1 = new System.Windows.Forms.ComboBox();
+            this.cbBusqueda2 = new System.Windows.Forms.ComboBox();
+            this.btnBuscarCategoria = new System.Windows.Forms.Button();
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvArticulos)).BeginInit();
@@ -51,6 +54,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.pbBorrar)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbModificar)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbArticulo)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -63,73 +67,67 @@
             this.label1.TabIndex = 0;
             this.label1.Text = "Artículos";
             // 
-            // textBox1
+            // txtBuscar
             // 
-            this.textBox1.BackColor = System.Drawing.Color.Gainsboro;
-            this.textBox1.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textBox1.Font = new System.Drawing.Font("Noto Sans", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox1.Location = new System.Drawing.Point(216, 31);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(194, 26);
-            this.textBox1.TabIndex = 1;
+            this.txtBuscar.BackColor = System.Drawing.Color.Gainsboro;
+            this.txtBuscar.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txtBuscar.Font = new System.Drawing.Font("Noto Sans", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtBuscar.Location = new System.Drawing.Point(790, 29);
+            this.txtBuscar.Name = "txtBuscar";
+            this.txtBuscar.Size = new System.Drawing.Size(154, 26);
+            this.txtBuscar.TabIndex = 1;
             // 
             // panel1
             // 
-            this.panel1.Controls.Add(this.button1);
-            this.panel1.Controls.Add(this.comboBox3);
-            this.panel1.Controls.Add(this.comboBox2);
-            this.panel1.Controls.Add(this.comboBox1);
+            this.panel1.Controls.Add(this.btnBuscar);
+            this.panel1.Controls.Add(this.cb2);
+            this.panel1.Controls.Add(this.cb1);
             this.panel1.Controls.Add(this.pictureBox1);
-            this.panel1.Controls.Add(this.textBox1);
             this.panel1.Controls.Add(this.label1);
+            this.panel1.Controls.Add(this.txtBuscar);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(1127, 80);
             this.panel1.TabIndex = 2;
             // 
-            // button1
+            // btnBuscar
             // 
-            this.button1.Font = new System.Drawing.Font("Noto Sans", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.Location = new System.Drawing.Point(975, 29);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(96, 26);
-            this.button1.TabIndex = 6;
-            this.button1.Text = "Agregar";
-            this.button1.UseVisualStyleBackColor = true;
+            this.btnBuscar.Font = new System.Drawing.Font("Noto Sans", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnBuscar.Location = new System.Drawing.Point(987, 30);
+            this.btnBuscar.Name = "btnBuscar";
+            this.btnBuscar.Size = new System.Drawing.Size(96, 26);
+            this.btnBuscar.TabIndex = 6;
+            this.btnBuscar.Text = "Buscar";
+            this.btnBuscar.UseVisualStyleBackColor = true;
+            this.btnBuscar.Click += new System.EventHandler(this.btnBuscar_Click);
             // 
-            // comboBox3
+            // cb2
             // 
-            this.comboBox3.Font = new System.Drawing.Font("Noto Sans", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.comboBox3.FormattingEnabled = true;
-            this.comboBox3.Location = new System.Drawing.Point(777, 29);
-            this.comboBox3.Name = "comboBox3";
-            this.comboBox3.Size = new System.Drawing.Size(121, 28);
-            this.comboBox3.TabIndex = 5;
+            this.cb2.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cb2.Font = new System.Drawing.Font("Noto Sans", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cb2.FormattingEnabled = true;
+            this.cb2.Location = new System.Drawing.Point(596, 27);
+            this.cb2.Name = "cb2";
+            this.cb2.Size = new System.Drawing.Size(121, 28);
+            this.cb2.TabIndex = 4;
             // 
-            // comboBox2
+            // cb1
             // 
-            this.comboBox2.Font = new System.Drawing.Font("Noto Sans", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.comboBox2.FormattingEnabled = true;
-            this.comboBox2.Location = new System.Drawing.Point(637, 28);
-            this.comboBox2.Name = "comboBox2";
-            this.comboBox2.Size = new System.Drawing.Size(121, 28);
-            this.comboBox2.TabIndex = 4;
-            // 
-            // comboBox1
-            // 
-            this.comboBox1.Font = new System.Drawing.Font("Noto Sans", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(497, 29);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(121, 28);
-            this.comboBox1.TabIndex = 3;
+            this.cb1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cb1.Font = new System.Drawing.Font("Noto Sans", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cb1.FormattingEnabled = true;
+            this.cb1.Location = new System.Drawing.Point(453, 28);
+            this.cb1.Name = "cb1";
+            this.cb1.Size = new System.Drawing.Size(121, 28);
+            this.cb1.TabIndex = 3;
+            this.cb1.SelectedIndexChanged += new System.EventHandler(this.cb1_SelectedIndexChanged);
             // 
             // pictureBox1
             // 
             this.pictureBox1.BackColor = System.Drawing.Color.Transparent;
             this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(182, 31);
+            this.pictureBox1.Location = new System.Drawing.Point(756, 29);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(28, 26);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -139,7 +137,7 @@
             // dgvArticulos
             // 
             this.dgvArticulos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvArticulos.Location = new System.Drawing.Point(52, 114);
+            this.dgvArticulos.Location = new System.Drawing.Point(52, 120);
             this.dgvArticulos.Name = "dgvArticulos";
             this.dgvArticulos.Size = new System.Drawing.Size(665, 377);
             this.dgvArticulos.TabIndex = 3;
@@ -159,6 +157,7 @@
             // pbAgregar
             // 
             this.pbAgregar.BackColor = System.Drawing.Color.Transparent;
+            this.pbAgregar.Cursor = System.Windows.Forms.Cursors.Hand;
             this.pbAgregar.Image = ((System.Drawing.Image)(resources.GetObject("pbAgregar.Image")));
             this.pbAgregar.Location = new System.Drawing.Point(439, 11);
             this.pbAgregar.Name = "pbAgregar";
@@ -167,10 +166,10 @@
             this.pbAgregar.TabIndex = 7;
             this.pbAgregar.TabStop = false;
             this.pbAgregar.Click += new System.EventHandler(this.pbAgregar_Click);
-            this.pbAgregar.MouseMove += new System.Windows.Forms.MouseEventHandler(this.pbAgregar_MouseMove);
             // 
             // pbBorrar
             // 
+            this.pbBorrar.Cursor = System.Windows.Forms.Cursors.Hand;
             this.pbBorrar.Image = ((System.Drawing.Image)(resources.GetObject("pbBorrar.Image")));
             this.pbBorrar.Location = new System.Drawing.Point(539, 11);
             this.pbBorrar.Name = "pbBorrar";
@@ -179,10 +178,10 @@
             this.pbBorrar.TabIndex = 6;
             this.pbBorrar.TabStop = false;
             this.pbBorrar.Click += new System.EventHandler(this.pbBorrar_Click);
-            this.pbBorrar.MouseMove += new System.Windows.Forms.MouseEventHandler(this.pbBorrar_MouseMove);
             // 
             // pbModificar
             // 
+            this.pbModificar.Cursor = System.Windows.Forms.Cursors.Hand;
             this.pbModificar.Image = ((System.Drawing.Image)(resources.GetObject("pbModificar.Image")));
             this.pbModificar.Location = new System.Drawing.Point(637, 11);
             this.pbModificar.Name = "pbModificar";
@@ -191,22 +190,69 @@
             this.pbModificar.TabIndex = 5;
             this.pbModificar.TabStop = false;
             this.pbModificar.Click += new System.EventHandler(this.pbModificar_Click);
-            this.pbModificar.MouseMove += new System.Windows.Forms.MouseEventHandler(this.pbModificar_MouseMove);
             // 
             // pbArticulo
             // 
-            this.pbArticulo.Location = new System.Drawing.Point(754, 114);
+            this.pbArticulo.Location = new System.Drawing.Point(754, 120);
             this.pbArticulo.Name = "pbArticulo";
             this.pbArticulo.Size = new System.Drawing.Size(329, 377);
             this.pbArticulo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pbArticulo.TabIndex = 5;
             this.pbArticulo.TabStop = false;
             // 
+            // cbBusqueda1
+            // 
+            this.cbBusqueda1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbBusqueda1.Font = new System.Drawing.Font("Noto Sans", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cbBusqueda1.FormattingEnabled = true;
+            this.cbBusqueda1.Location = new System.Drawing.Point(52, 86);
+            this.cbBusqueda1.Name = "cbBusqueda1";
+            this.cbBusqueda1.Size = new System.Drawing.Size(121, 28);
+            this.cbBusqueda1.TabIndex = 7;
+            this.cbBusqueda1.SelectedIndexChanged += new System.EventHandler(this.cbBusqueda1_SelectedIndexChanged);
+            // 
+            // cbBusqueda2
+            // 
+            this.cbBusqueda2.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbBusqueda2.Font = new System.Drawing.Font("Noto Sans", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cbBusqueda2.FormattingEnabled = true;
+            this.cbBusqueda2.Location = new System.Drawing.Point(179, 86);
+            this.cbBusqueda2.Name = "cbBusqueda2";
+            this.cbBusqueda2.Size = new System.Drawing.Size(121, 28);
+            this.cbBusqueda2.TabIndex = 8;
+            // 
+            // btnBuscarCategoria
+            // 
+            this.btnBuscarCategoria.Font = new System.Drawing.Font("Noto Sans", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnBuscarCategoria.Location = new System.Drawing.Point(306, 86);
+            this.btnBuscarCategoria.Name = "btnBuscarCategoria";
+            this.btnBuscarCategoria.Size = new System.Drawing.Size(59, 28);
+            this.btnBuscarCategoria.TabIndex = 7;
+            this.btnBuscarCategoria.Text = "Buscar";
+            this.btnBuscarCategoria.UseVisualStyleBackColor = true;
+            this.btnBuscarCategoria.Click += new System.EventHandler(this.btnBuscarCategoria_Click);
+            // 
+            // pictureBox2
+            // 
+            this.pictureBox2.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.pictureBox2.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox2.Image")));
+            this.pictureBox2.Location = new System.Drawing.Point(371, 88);
+            this.pictureBox2.Name = "pictureBox2";
+            this.pictureBox2.Size = new System.Drawing.Size(27, 26);
+            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox2.TabIndex = 9;
+            this.pictureBox2.TabStop = false;
+            this.pictureBox2.Click += new System.EventHandler(this.pictureBox2_Click);
+            // 
             // FormArticulo
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1127, 589);
+            this.Controls.Add(this.pictureBox2);
+            this.Controls.Add(this.btnBuscarCategoria);
+            this.Controls.Add(this.cbBusqueda1);
+            this.Controls.Add(this.cbBusqueda2);
             this.Controls.Add(this.pbArticulo);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.dgvArticulos);
@@ -224,6 +270,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.pbBorrar)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbModificar)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbArticulo)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -231,18 +278,21 @@
         #endregion
 
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox txtBuscar;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.PictureBox pictureBox1;
-        private System.Windows.Forms.ComboBox comboBox1;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.ComboBox comboBox3;
-        private System.Windows.Forms.ComboBox comboBox2;
+        private System.Windows.Forms.ComboBox cb1;
+        private System.Windows.Forms.Button btnBuscar;
+        private System.Windows.Forms.ComboBox cb2;
         private System.Windows.Forms.DataGridView dgvArticulos;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.PictureBox pbAgregar;
         private System.Windows.Forms.PictureBox pbBorrar;
         private System.Windows.Forms.PictureBox pbModificar;
         private System.Windows.Forms.PictureBox pbArticulo;
+        private System.Windows.Forms.ComboBox cbBusqueda1;
+        private System.Windows.Forms.ComboBox cbBusqueda2;
+        private System.Windows.Forms.Button btnBuscarCategoria;
+        private System.Windows.Forms.PictureBox pictureBox2;
     }
 }

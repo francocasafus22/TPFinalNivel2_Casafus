@@ -24,13 +24,30 @@ namespace TPFinalNivel2_Casafus
 
         private void FormArticulo_Load(object sender, EventArgs e)
         {
-            cargarArticulo();
+
+            try
+            {
+                cargarArticulo();
+                cb1.Items.Add("Codigo");
+                cb1.Items.Add("Nombre");
+                cb1.Items.Add("Precio");
+
+                cbBusqueda1.Items.Add("Categoria");
+                cbBusqueda1.Items.Add("Marca");
+
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+           
         }
 
         private void cargarArticulo()
         {
             ArticuloNegocio negocio = new ArticuloNegocio();
-            listaArticulos = negocio.listar();
+            listaArticulos = negocio.listar(""); // Se le pasa un string vacío para que no filtre por nada
             dgvArticulos.DataSource = listaArticulos;
             dgvArticulos.Columns["Imagen"].Visible = false;
             dgvArticulos.Columns["Id"].Visible = false;
@@ -46,7 +63,7 @@ namespace TPFinalNivel2_Casafus
             }
             catch (Exception)
             {
-                pbArticulo.Load("https://www.thermaxglobal.com/wp-content/uploads/2020/05/image-not-found.jpg");
+                pbArticulo.Load("https://cdn.shopify.com/s/files/1/0533/2089/files/placeholder-images-image_large.png?v=1530129081");
             }
         }
 
@@ -66,21 +83,6 @@ namespace TPFinalNivel2_Casafus
             cargarArticulo();
         }
 
-        private void pbAgregar_MouseMove(object sender, MouseEventArgs e)
-        {
-            pbAgregar.Cursor = Cursors.Hand;
-        }
-
-        private void pbBorrar_MouseMove(object sender, MouseEventArgs e)
-        {
-            pbBorrar.Cursor = Cursors.Hand;
-        }
-
-        private void pbModificar_MouseMove(object sender, MouseEventArgs e)
-        {
-            pbModificar.Cursor = Cursors.Hand;
-        }
-
         private void pbBorrar_Click(object sender, EventArgs e)
         {
             ArticuloNegocio negocio = new ArticuloNegocio();
@@ -97,7 +99,6 @@ namespace TPFinalNivel2_Casafus
             }
 
         }
-
         private void pbModificar_Click(object sender, EventArgs e)
         {
             Articulo seleccionado = new Articulo();
@@ -105,7 +106,124 @@ namespace TPFinalNivel2_Casafus
             FormAgregarArticulo form = new FormAgregarArticulo(seleccionado);
             form.ShowDialog();
             cargarArticulo();
-            
+
+        }
+
+        private void btnBuscar_Click(object sender, EventArgs e)
+        {
+            ArticuloNegocio negocio = new ArticuloNegocio();
+            List<Articulo> listaFiltrada;
+
+            if (validarFiltros())
+                return;
+
+            if (cb2.SelectedItem == null)
+            {
+                listaFiltrada = negocio.listar(txtBuscar.Text);
+            }
+            else
+            {
+                listaFiltrada = negocio.busquedaFiltrada(txtBuscar.Text, cb1.SelectedItem.ToString(), cb2.SelectedItem.ToString());
+            }
+
+            dgvArticulos.DataSource = listaFiltrada;
+            dgvArticulos.Columns["Imagen"].Visible = false;
+            dgvArticulos.Columns["Id"].Visible = false;
+
+        }
+
+        private void cb1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            cb2.Items.Clear();
+            ArticuloNegocio negocio = new ArticuloNegocio();
+
+            if (cb1.SelectedItem.ToString() == "Precio")
+            {
+                cb2.Items.Add("Mayor a");
+                cb2.Items.Add("Menor a");
+                cb2.Items.Add("Igual a");
+            }
+            else
+            {
+                cb2.Items.Add("Comienza con");
+                cb2.Items.Add("Termina con");
+                cb2.Items.Add("Contiene");
+            }
+        }
+
+
+        private void cbBusqueda1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                if (cbBusqueda1.SelectedItem?.ToString() == "Categoria")
+                {
+                    CategoriaNegocio negocio = new CategoriaNegocio();
+                    cbBusqueda2.DataSource = negocio.listar("");
+                    cbBusqueda2.ValueMember = "Id";
+                    cbBusqueda2.DisplayMember = "Descripcion";
+                    cbBusqueda2.SelectedIndex = -1;
+                }
+                else if (cbBusqueda1.SelectedItem?.ToString() == "Marca")
+                {
+                    MarcaNegocio negocio = new MarcaNegocio();
+                    cbBusqueda2.DataSource = negocio.listar("");
+                    cbBusqueda2.ValueMember = "Id";
+                    cbBusqueda2.DisplayMember = "Descripcion";
+                    cbBusqueda2.SelectedIndex = -1;
+                    
+                }
+            }
+            catch (Exception ex)
+            {
+
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        private void btnBuscarCategoria_Click(object sender, EventArgs e)
+        {
+            ArticuloNegocio negocio = new ArticuloNegocio();
+            List<Articulo> listaFiltrada;
+            listaFiltrada = negocio.busquedaCategoria(cbBusqueda1.SelectedItem.ToString(), cbBusqueda2.SelectedItem.ToString());
+            dgvArticulos.DataSource = listaFiltrada;
+            dgvArticulos.Columns["Imagen"].Visible = false;
+            dgvArticulos.Columns["Id"].Visible = false;
+            cbBusqueda1.SelectedIndex = -1;
+            cbBusqueda2.SelectedIndex = -1;
+            cbBusqueda2.DataSource = null;
+        }
+
+        private void pictureBox2_Click(object sender, EventArgs e)
+        {
+            ArticuloNegocio negocio = new ArticuloNegocio();
+            dgvArticulos.DataSource = negocio.listar("");
+        }
+        private bool soloNumeros(string texto)
+        {
+            foreach (char letra in texto)
+            {
+                if (!char.IsNumber(letra))
+                {
+                    return false;
+                }
+            }
+
+            return true;
+        } 
+        private bool validarFiltros()
+        {
+            if (cb1.SelectedItem.ToString() == "Precio")
+            {
+                if (!(soloNumeros(txtBuscar.Text)))
+                {
+                    MessageBox.Show("El campo de precio solo admite números");
+                    txtBuscar.Text = "";
+                    return true;
+                }
+            }
+
+            return false;
 
         }
     }

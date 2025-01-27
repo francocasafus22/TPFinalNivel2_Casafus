@@ -11,14 +11,21 @@ namespace Negocio
     public class MarcaNegocio
     {
 
-        public List<Marca> listar()
+        public List<Marca> listar(string filtro)
         {
             AccesoDatos datos = new AccesoDatos();
             List<Marca> lista = new List<Marca>();
 
             try
             {
-                datos.setConsulta("Select Id, Descripcion from MARCAS");
+                if(filtro == "")
+                {
+                    datos.setConsulta("Select Id, Descripcion from MARCAS");
+                } else
+                {
+                    datos.setConsulta("Select Id, Descripcion from MARCAS where Descripcion like @filtro");
+                    datos.setParametro("@filtro", "%" + filtro + "%");
+                }
                 datos.ejecutarLectura();
 
                 while (datos.Lector.Read())

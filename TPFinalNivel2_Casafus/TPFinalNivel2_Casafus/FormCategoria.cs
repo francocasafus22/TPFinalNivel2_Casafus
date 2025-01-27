@@ -29,8 +29,29 @@ namespace TPFinalNivel2_Casafus
         private void cargarCategorias()
         {
             CategoriaNegocio negocio = new CategoriaNegocio();
-            listaCategorias = negocio.listar();
+            listaCategorias = negocio.listar("");
             dgvCategorias.DataSource = listaCategorias;
+        }
+
+        private void btnBuscar_Click(object sender, EventArgs e)
+        {
+            CategoriaNegocio negocio = new CategoriaNegocio();
+            try
+            {
+                if (txtBuscar.Text == "")
+                {
+                    listaCategorias = negocio.listar("");
+                }
+                else
+                {
+                    listaCategorias = negocio.listar(txtBuscar.Text);
+                }
+                dgvCategorias.DataSource = listaCategorias;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
         }
     }
 }

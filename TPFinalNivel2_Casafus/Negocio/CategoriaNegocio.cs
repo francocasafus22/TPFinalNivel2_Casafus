@@ -10,13 +10,21 @@ namespace Negocio
     public class CategoriaNegocio
     {
 
-        public List<Categoria> listar()
+        public List<Categoria> listar(string filtro)
         {
             List<Categoria> lista = new List<Categoria>();
             AccesoDatos datos = new AccesoDatos();
             try
             {
-                datos.setConsulta("select Id, Descripcion from CATEGORIAS");
+                if(filtro == "")
+                {
+                    datos.setConsulta("select Id, Descripcion from Categorias");
+                }
+                else
+                {
+                    datos.setConsulta("select Id, Descripcion from Categorias where Descripcion like @filtro");
+                    datos.setParametro("@filtro", "%" + filtro + "%");
+                }
                 datos.ejecutarLectura();
                 while (datos.Lector.Read())
                 {
