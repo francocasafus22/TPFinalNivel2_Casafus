@@ -28,6 +28,7 @@ namespace TPFinalNivel2_Casafus
             MarcaNegocio negocio = new MarcaNegocio();
             List<Marca> lista = negocio.listar("");
             dgvMarcas.DataSource = lista;
+            
         }
 
         private void button1_Click(object sender, EventArgs e)

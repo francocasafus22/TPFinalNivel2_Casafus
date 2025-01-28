@@ -24,7 +24,7 @@ namespace TPFinalNivel2_Casafus
 
         private void FormArticulo_Load(object sender, EventArgs e)
         {
-
+           
             try
             {
                 cargarArticulo();
@@ -86,33 +86,50 @@ namespace TPFinalNivel2_Casafus
         private void pbBorrar_Click(object sender, EventArgs e)
         {
             ArticuloNegocio negocio = new ArticuloNegocio();
-            DialogResult resultado =  MessageBox.Show("¿Está seguro que desea borrar el artículo seleccionado?", "Borrar", MessageBoxButtons.YesNo);
-            if (resultado == DialogResult.Yes)
-            {
-                if (dgvArticulos.CurrentRow != null)
-                {
-                    Articulo seleccionado = (Articulo)dgvArticulos.CurrentRow.DataBoundItem;
-                    negocio.borrarArticulo(seleccionado.Id);
-                    cargarArticulo();
-                }
 
+            if (dgvArticulos.SelectedRows.Count == 1)
+            {
+                DialogResult resultado = MessageBox.Show("¿Está seguro que desea borrar el artículo seleccionado?", "Borrar", MessageBoxButtons.YesNo);
+                if (resultado == DialogResult.Yes)
+                {
+                    if (dgvArticulos.CurrentRow != null)
+                    {
+                        Articulo seleccionado = (Articulo)dgvArticulos.CurrentRow.DataBoundItem;
+                        negocio.borrarArticulo(seleccionado.Id);
+                        cargarArticulo();
+                    }
+                }
+            }
+            else
+            {
+                MessageBox.Show("Debe seleccionar un artículo para poder borrarlo");
             }
 
         }
         private void pbModificar_Click(object sender, EventArgs e)
         {
             Articulo seleccionado = new Articulo();
-            seleccionado = (Articulo)dgvArticulos.CurrentRow.DataBoundItem;
-            FormAgregarArticulo form = new FormAgregarArticulo(seleccionado);
-            form.ShowDialog();
-            cargarArticulo();
+
+            
+                if(dgvArticulos.SelectedRows.Count == 1)
+                {
+                    seleccionado = (Articulo)dgvArticulos.CurrentRow.DataBoundItem;
+                    FormAgregarArticulo form = new FormAgregarArticulo(seleccionado);
+                    form.ShowDialog();
+                    cargarArticulo();
+                }
+                else
+                {
+                    MessageBox.Show("Debe seleccionar un artículo para poder modificarlo");
+                }
+
 
         }
 
         private void btnBuscar_Click(object sender, EventArgs e)
         {
             ArticuloNegocio negocio = new ArticuloNegocio();
-            List<Articulo> listaFiltrada;
+            List<Articulo> listaFiltrada = new List<Articulo>();
 
             if (validarFiltros())
                 return;
@@ -137,7 +154,7 @@ namespace TPFinalNivel2_Casafus
             cb2.Items.Clear();
             ArticuloNegocio negocio = new ArticuloNegocio();
 
-            if (cb1.SelectedItem.ToString() == "Precio")
+            if (cb1.SelectedItem?.ToString() == "Precio")
             {
                 cb2.Items.Add("Mayor a");
                 cb2.Items.Add("Menor a");
@@ -184,8 +201,17 @@ namespace TPFinalNivel2_Casafus
         private void btnBuscarCategoria_Click(object sender, EventArgs e)
         {
             ArticuloNegocio negocio = new ArticuloNegocio();
-            List<Articulo> listaFiltrada;
-            listaFiltrada = negocio.busquedaFiltrada("", cbBusqueda1.SelectedItem.ToString(), cbBusqueda2.SelectedItem.ToString());
+            List<Articulo> listaFiltrada = new List<Articulo>();
+            if(cbBusqueda1.SelectedIndex != -1 && cbBusqueda2.SelectedIndex != -1)
+            {
+                listaFiltrada = negocio.busquedaFiltrada("", cbBusqueda1.SelectedItem.ToString(), cbBusqueda2.SelectedItem.ToString());
+            }
+            else
+            {
+                MessageBox.Show("Debe seleccionar una categoría y una marca para poder filtrar");
+                return;
+            }
+
             dgvArticulos.DataSource = listaFiltrada;
             dgvArticulos.Columns["Imagen"].Visible = false;
             dgvArticulos.Columns["Id"].Visible = false;
@@ -214,19 +240,44 @@ namespace TPFinalNivel2_Casafus
         } 
         private bool validarFiltros()
         {
-            
-                if (cb1.SelectedItem?.ToString() == "Precio")
+
+                if (cb1.SelectedItem != null)
                 {
-                    if (!(soloNumeros(txtBuscar.Text)))
+                    if (cb1.SelectedItem.ToString() == "Precio")
                     {
-                        MessageBox.Show("El campo de precio solo admite números");
-                        txtBuscar.Text = "";
-                        return true;
+                        if (!(soloNumeros(txtBuscar.Text)))
+                        {
+                            MessageBox.Show("El campo de precio solo admite números");
+                            txtBuscar.Text = "";
+                            return true;
+                        }
                     }
                 }
-            
+
+                if (cb1.SelectedIndex != -1 && cb2.SelectedIndex == -1)
+                {
+                    MessageBox.Show("Le falta seleccionar un filtro para buscar");
+                    return true;
+                }
+                
+                if(cb1.SelectedIndex != -1 && cb2.SelectedIndex != -1 && txtBuscar.Text == "")
+                {
+                    MessageBox.Show("Debe ingresar un valor para buscar");
+                    return true;
+                 }
+
 
             return false;
+
+        }
+        private void button1_Click(object sender, EventArgs e)
+        {
+            ArticuloNegocio negocio = new ArticuloNegocio();
+            cb1.SelectedIndex = -1;
+            cb2.SelectedIndex = -1;
+            cb2.Items.Clear();
+            txtBuscar.Text = "";
+            dgvArticulos.DataSource = negocio.listar("");
 
         }
     }

@@ -134,6 +134,7 @@
             this.Controls.Add(this.panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "FormMarcaAgregar";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "FormCategoriaAgregar";
             this.Load += new System.EventHandler(this.FormCategoriaAgregar_Load);
             this.panel1.ResumeLayout(false);

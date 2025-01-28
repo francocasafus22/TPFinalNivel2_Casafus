@@ -17,11 +17,12 @@ namespace TPFinalNivel2_Casafus
     {
         private Articulo articulo = null;
 
-        // Importa la función de user32.dll
+        // Para poder mover la ventana desde el panel superior
         [DllImport("user32.dll")]
         public static extern int SendMessage(IntPtr hWnd, int Msg, int wParam, int lParam);
         [DllImport("user32.dll")]
         public static extern bool ReleaseCapture();
+        
 
         public FormAgregarArticulo()
         {
@@ -73,6 +74,7 @@ namespace TPFinalNivel2_Casafus
 
         private void panelTop_MouseDown(object sender, MouseEventArgs e)
         {
+            // Para poder mover la ventana desde el panel superior
             if (e.Button == MouseButtons.Left)
             {
                 ReleaseCapture();
@@ -137,7 +139,12 @@ namespace TPFinalNivel2_Casafus
                 }
                 Close();
             }
-            catch (Exception ex)
+            catch (FormatException)
+            {
+                MessageBox.Show("El campo precio solo acepta números");
+            }
+            
+            catch (Exception ex) 
             {
 
                 MessageBox.Show(ex.Message);

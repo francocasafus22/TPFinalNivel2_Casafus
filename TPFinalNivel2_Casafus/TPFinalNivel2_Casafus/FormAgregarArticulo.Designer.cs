@@ -216,7 +216,7 @@
             this.cbCategoria.FormattingEnabled = true;
             this.cbCategoria.Location = new System.Drawing.Point(130, 296);
             this.cbCategoria.Name = "cbCategoria";
-            this.cbCategoria.Size = new System.Drawing.Size(121, 32);
+            this.cbCategoria.Size = new System.Drawing.Size(155, 32);
             this.cbCategoria.TabIndex = 12;
             // 
             // label5
@@ -245,7 +245,7 @@
             this.cbMarca.FormattingEnabled = true;
             this.cbMarca.Location = new System.Drawing.Point(130, 334);
             this.cbMarca.Name = "cbMarca";
-            this.cbMarca.Size = new System.Drawing.Size(121, 32);
+            this.cbMarca.Size = new System.Drawing.Size(155, 32);
             this.cbMarca.TabIndex = 14;
             // 
             // pbImagen
@@ -281,6 +281,7 @@
             this.Controls.Add(this.panelTop);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "FormAgregarArticulo";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "FormAgregarArticulo";
             this.Load += new System.EventHandler(this.FormAgregarArticulo_Load);
             this.panelTop.ResumeLayout(false);

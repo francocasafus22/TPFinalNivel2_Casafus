@@ -30,7 +30,8 @@ namespace TPFinalNivel2_Casafus
         {
             CategoriaNegocio negocio = new CategoriaNegocio();
             listaCategorias = negocio.listar("");
-            dgvCategorias.DataSource = listaCategorias;
+            dgvCategoria.DataSource = listaCategorias;            
+
         }
 
         private void btnBuscar_Click(object sender, EventArgs e)
@@ -46,7 +47,7 @@ namespace TPFinalNivel2_Casafus
                 {
                     listaCategorias = negocio.listar(txtBuscar.Text);
                 }
-                dgvCategorias.DataSource = listaCategorias;
+                dgvCategoria.DataSource = listaCategorias;
             }
             catch (Exception ex)
             {
@@ -64,7 +65,7 @@ namespace TPFinalNivel2_Casafus
         private void pbModificar_Click(object sender, EventArgs e)
         {
             Categoria seleccionado = new Categoria();
-            seleccionado = (Categoria)dgvCategorias.CurrentRow.DataBoundItem;
+            seleccionado = (Categoria)dgvCategoria.CurrentRow.DataBoundItem;
             FormCategoriaAgregar form = new FormCategoriaAgregar(seleccionado);
             form.ShowDialog();
             cargarCategorias();

@@ -15,7 +15,7 @@ namespace TPFinalNivel2_Casafus
 {
     public partial class FormMarcaAgregar : Form
     {
-        // Importa la función de user32.dll
+        // Para poder mover la ventana desde el panel superior
         [DllImport("user32.dll")]
         public static extern int SendMessage(IntPtr hWnd, int Msg, int wParam, int lParam);
         [DllImport("user32.dll")]
@@ -40,6 +40,7 @@ namespace TPFinalNivel2_Casafus
 
         private void panel1_MouseDown(object sender, MouseEventArgs e)
         {
+            // Para poder mover la ventana desde el panel superior
             if (e.Button == MouseButtons.Left)
             {
                 ReleaseCapture();
